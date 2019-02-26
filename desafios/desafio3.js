@@ -18,7 +18,16 @@ As propriedades e tipos de valores para cada propriedade desse objeto devem ser:
 */
 
 
-var pessoa = {nome: 'Rodrigo', sobrenome: 'Talison', sexo: 'm', idade: 27, altura: 176, peso: 77, andando: false, caminhouQuantosMetros: 0};
+var pessoa = {
+	nome: 'Rodrigo', 
+	sobrenome: 'Talison', 
+	sexo: 'm', 
+	idade: 27, 
+	altura: 176, 
+	peso: 77, 
+	andando: false, 
+	caminhouQuantosMetros: 0
+};
 
 /*
 Adicione um método ao objeto `pessoa` chamado `fazerAniversario`. O método deve
@@ -40,8 +49,8 @@ valor dessa propriedade a quantidade passada por parâmetro;
 booleano que representa "verdadeiro";
 */
 
-pessoa.andar = function(qtCaminhada){
-	pessoa.caminhouQuantosMetros += qtCaminhada;
+pessoa.andar = function(metros){
+	pessoa.caminhouQuantosMetros += metros;
 	pessoa.andando = true;
 }
 
@@ -163,12 +172,16 @@ retornar a string:
 - "Olá, eu sou o [NOME COMPLETO], tenho [IDADE] anos, [ALTURA], meu peso é [PESO] e, só hoje, eu já caminhei [CAMINHOU QUANTOS METROS] metros!"
 
 Só que, antes de retornar a string, você vai fazer algumas validações:
+
 - Se o `sexo` de `pessoa` for "Feminino", a frase acima, no início da
 apresentação, onde diz "eu sou o", deve mostrar "a" no lugar do "o";
+
 - Se a idade for `1`, a frase acima, na parte que fala da idade, vai mostrar a
 palavra "ano" ao invés de "anos", pois é singular;
+
 - Se a quantidade de metros caminhados for igual a `1`, então a palavra que
 deve conter no retorno da frase acima é "metro" no lugar de "metros".
+
 - Para cada validação, você irá declarar uma variável localmente (dentro do
 método), que será concatenada com a frase de retorno, mostrando a resposta
 correta, de acordo com os dados inseridos no objeto.
@@ -176,11 +189,22 @@ correta, de acordo com os dados inseridos no objeto.
 
 pessoa.apresentacao = function()
 {
+	var genero = "o";
+	var ano  = "anos";
+	var metro = "metros";
 
+	if(pessoa.sexo == "f")
+		genero = "a";
+	
+	if (pessoa.idade == 1)
+		ano = "ano";
+	
+	if(pessoa.caminhouQuantosMetros == 1)
+		metro = "metro";
 
-	return "Olá, eu sou o " + pessoa.nomeCompleto() + ", tenho " + pessoa.idade + " anos, " + pessoa.altura + ", meu peso é " + pessoa.peso + " e, só hoje, eu já caminhei " + pessoa.caminhouQuantosMetros() + " metros!";
+	return "Olá, eu sou " + genero + " " + pessoa.nomeCompleto() + ", tenho " + pessoa.idade + " " + ano + ", " + pessoa.altura + ", meu peso é " + pessoa.peso + " e, só hoje, eu já caminhei " + pessoa.caminhouQuantosMetros + " " + metro + "!";
 }
 
 // Agora, apresente-se ;)
-
+pessoa.apresentacao();
 
