@@ -40,26 +40,10 @@ Crie uma função chamada `showTeamPosition` com as seguintes características:
 
 function showTeamPosition(posicao)
 {
-    switch(posicao)
-    {
-        case 1:
-            return "O time que está em " + posicao +"º lugar é o "+ teams[--posicao] +".";
-        break;
-        case 2:
-            return "O time que está em " + posicao +"º lugar é o "+ teams[--posicao] +".";
-        break;
-        case 3:
-            return "O time que está em " + posicao +"º lugar é o "+ teams[--posicao] +".";
-        break;
-        case 4:
-            return "O time que está em " + posicao +"º lugar é o "+ teams[--posicao] +".";
-        break;
-        case 5:
-            return "O time que está em " + posicao +"º lugar é o "+ teams[--posicao] +".";
-        break;
-        default:
-            return "Não temos a informação do time que está nessa posição.";
-    }
+    if (posicao < 1 || posicao > 5) 
+        return "Não temos a informação do time que está nessa posição.";
+
+    return "O time que está em " + posicao +"º lugar é o "+ teams[--posicao] +".";
 }
 
 /*
@@ -101,11 +85,33 @@ Crie uma função chamada `convertToHex`, com as seguintes características:
 
 function convertToHex(color)
 {
-    
+    switch(color)
+    {
+        case "red":
+            return "O hexadecimal para a cor "+ color +" é  #CD5C5C";
+        break;
+        case "pink":
+            return "O hexadecimal para a cor "+ color +" é #FFC0CB";
+        break;
+        case "orange":
+            return "O hexadecimal para a cor "+ color +" é #FFA07A";
+        break;
+        case "yellow":
+            return "O hexadecimal para a cor "+ color +" é #FFD700";
+        break;
+        case "blue":
+            return "O hexadecimal para a cor "+ color +" é  #E6E6FA";
+        break;
+        default: 
+            return "Não temos o equivalente hexadecimal para [COR].";
+    }
 
 }
 
 /*
 Tente mostrar o hexadecimal de 8 cores diferentes usando a função criada acima.
 */
-// ?
+// 
+convertToHex("red");
+convertToHex();
+convertToHex("orange");
