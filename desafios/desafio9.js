@@ -9,42 +9,49 @@ ajuste o posicionamento das variáveis e funções internas, para que os código
 dentro de `console.log` que estão retornando `undefined` retornem o valor
 correto da variável ou função chamada.
 */
-function myFunction() {
+(function myFunction() {
+	var number1 = 10;
+    var number2 = 20;
     console.log( 'Na função `myFunction`, o primeiro número é', number1 );
     console.log( 'Na função `myFunction`, o segundo número é', number2 );
-    var number1 = 10;
+
     return number1 + number2;
-    var number2 = 20;
-}
+    
+})()
+
 myFunction();
 
 /*
     myFunction2();
 */
-function myFunction2() {
-    console.log( 'A soma de 10 e 20 é igual a', sum ? sum() : undefined );
-    var sum = function sum() {
+(function myFunction2() {
+	var number1 = 10;
+    var number2 = 20;
+
+     var sum = function sum() {
         return number1 + number2;
     };
-    var number1 = 10;
-    var number2 = 20;
+
+    console.log( 'A soma de 10 e 20 é igual a', sum ? sum() : undefined );   
+    
     return sum();
-}
+})()
 myFunction2();
 
 /*
     myFunction3();
 */
-function myFunction3() {
-    console.log( 'A soma de 40 e 50 é igual a', sum() );
-    var number2 = 50;
+(function myFunction3() {
+	var number1 = 40;
+	var number2 = 50;
+    console.log( 'A soma de 40 e 50 é igual a', sum() );    
     console.log( 'Na função myFunction3, number1 é igual a', number1 );
-    var number1 = 40;
+    
     return sum();
     function sum() {
         return number1 + number2;
-    };
-}
+    }
+})()
 myFunction3();
 
 /*
