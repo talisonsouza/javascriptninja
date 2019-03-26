@@ -70,37 +70,36 @@ vai efetuar. Será uma string com os valores `+`, `-`, `*`, `/` ou `%`;
 
 function calculator(operacao)
 {
-
 	return function(x, y){
 
 		var result;
 
-	switch(operacao)
-	{
-		case "+":
-			result = x + y;
-		break;
+			switch(operacao)
+			{
+				case "+":
+					result = x + y;
+				break;
 
-		case "-":
-			result = x - y;
-		break;	
+				case "-":
+					result = x - y;
+				break;	
 
-		case "*":
-			result = x * y;
-		break;
-		
-		case "/":
-			result = x / y;
-		break;	
+				case "*":
+					result = x * y;
+				break;
+				
+				case "/":
+					result = x / y;
+				break;	
 
-		case "%":		
-			 result = x % y;
-		break;	
+				case "%":		
+					 result = x % y;
+				break;	
 
-		default:
-			return "Operação inválida.";	
-		
-	}
+				default:
+					return "Operação inválida.";	
+				
+			}
 
 	return "Resultado da operação: " + x + " " + operacao + " " + y +" = " + result + "."
 
@@ -134,6 +133,7 @@ var subtraction = calculator("-");
 var multiplication = calculator("*");
 var division = calculator("/");
 var mod = calculator("%");
+var teste = calculator("rrr");
 
 /*
 Faça uma operação com cada uma das funções criadas acima, mostrando o resultado
