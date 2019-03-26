@@ -60,13 +60,22 @@ o retorno de `calculator`.
 por parâmetro, INVOCADA, e passando a ela por parâmetro os dois valores
 que foram passadas para a primeira função `calculator`.
 */
-// ?
+// 
+
+function calculator(x, y)
+{
+	return function(callback){
+		return callback(x, y);
+	};
+}
 
 /*
 Declare uma variável chamada `sum`, e atribua a ela a função `calculator`,
 passando dois números por parâmetro.
 */
-// ?
+// 
+
+var sum = calculator(10,5);
 
 /*
 Sabemos que `sum` agora tem uma função atribuída a ela, que é o retorno de
@@ -78,14 +87,23 @@ uma função anônima que irá retornar a soma dos dois números que essa funç�
 anônima tem como seus argumentos.
 */
 console.log( 'O resultado da soma é:' );
-// ?
+// 
+
+sum(function(x, y){
+	return x + y;
+})
 
 /*
 Agora declare outra variáveis chamadas `subtraction`, `multiplication`,
 `division` e `mod`, e atribua à elas `calculator`, passando números
 diferentes para cada chamada.
 */
-// ?
+// 
+
+var subtraction = calculator(10,5);
+var multiplication = calculator(2,10);
+var division = calculator(10,2);
+var mod = calculator(10,2);
 
 /*
 Mostre as variáveis acima no `console` (uma chamada de console por variável),
@@ -95,13 +113,29 @@ As suas respostas devem estar abaixo dos `console.log` referentes à cada
 chamada.
 */
 console.log( 'O resultado da subtração é:' );
-// ?
+// 
+
+subtraction(function(x, y){
+	return x - y;
+});
 
 console.log( 'O resultado da multiplicação é:' );
-// ?
+// 
+
+multiplication(function(x, y){
+	return x * y;
+});
 
 console.log( 'O resultado da divisão é:' );
-// ?
+// 
+
+division(function(x, y){
+	return x / y;
+});
 
 console.log( 'O resto da divisão é:' );
-// ?
+// 
+
+mod(function(x, y){
+	return x % y;
+});
