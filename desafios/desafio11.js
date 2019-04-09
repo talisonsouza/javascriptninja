@@ -9,10 +9,10 @@ Qual loop você deve usar para que essa mensagem seja mostrada no console?
 */
 var once = false;
 
-do{
-	console.log('Entrou ao menos uma vez!');	
+do {
+ 	console.log('Entrou ao menos uma vez!');	
 
-}while(once == true);
+} while(once == true);
 
 /*
 Crie um objeto chamado `person`, que receba as seguintes propriedades:
@@ -22,7 +22,7 @@ para o nome, idade, peso e data de nascimento dessa pessoa.
 var person = {
 	name: 'Rodrigo',
 	age: 27,
-	weight: 175,
+	weight: 75,
 	birthday: '15/04/1991' 
 };
 
@@ -52,7 +52,7 @@ Após a função, mostrar a mensagem no console:
 'The person has more than 25 years old? [TRUE/FALSE]'
 */
 function moreThan(age) {	
-	return person['age'] > age ? true : false;
+	return person.age > age;
 }
 
 console.log('The person has more than 25 years old? ', moreThan(25))
