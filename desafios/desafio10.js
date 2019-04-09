@@ -50,11 +50,14 @@
 
 	function isOperatorValid(operator)
 	{	
-		return operator == '+' || 
+
+		return !!operation[operator];
+		/*return operation[operator] !== undefined;*/
+		/*return operator == '+' || 
 			   operator == '-' ||
 			   operator == '*' ||
 			   operator == '/' ||
-			   operator == '%';
+			   operator == '%';*/
 	}
 
 	/*
@@ -76,7 +79,7 @@
 
 		return function(x, y){
 
-			if(typeof(x) != 'number' || typeof(y) != 'number')
+			if(typeof(x) != 'number' && typeof(y) != 'number')
 				return false;
 
 			return operation[operator](x, y);
@@ -144,7 +147,7 @@
 	- Se "sum" for "false", mostrar no console a mensagem de erro.
 	*/
 
-	if(!sum())
+	if(sum)
 	{
 		number1 = 10;
 		number2 = 5;
