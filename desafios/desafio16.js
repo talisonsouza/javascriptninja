@@ -38,6 +38,12 @@ console.log para cada formato.
 console.log( '\nNome convertido à partir de um slug:' );
 var fullName = 'rodrigo-talison-rocha-de-souza';
 
+var resultFinal = '';
+fullName.split('-').forEach(function(item){
+	resultFinal += (item.charAt(0).toUpperCase() + item.slice(1) + " ");
+});
+console.log(fullName)
+console.log(resultFinal)
 
 /*
 - Crie um array com 5 nomes. Reduza esses nomes a uma única string, separando
@@ -49,21 +55,23 @@ O resultado final deve ficar mais ou menos assim:
 5 nomes foi somente uma sugestão ;)
 */
 console.log( '\nMeus amigos:' );
-// ?
 
 /*
 Usando o replace(), faça a string "Roberto" virar "Roberta".
 Mostre o resultado no console.
 */
 console.log( '\nEra "Roberto", agora é:' );
-// ?
+
+console.log( 'Roberto'.replace('Roberto', 'Roberta') );
+
 
 /*
 Mostre no console a parte "nando" da string "Fernando". Use o método que
 faz a busca do final para o início da string.
 */
 console.log( '\nParte de uma string:' );
-// ?
+
+console.log('Fernando'.slice(3)) 
 
 /*
 Declare uma variável chamada `myName`, que receba o seu primeiro nome,
@@ -75,6 +83,16 @@ de qualquer tamanho, escrito de qualquer forma.
 Ex.: Nomes que deveriam funcionar: "Fernando", "RoBertO", "gabriEla", etc.
 */
 console.log( '\nNome com letras intercaladas entre caixa alta e baixa:' );
-// ?
+var myName = 'gabriEla';
+
+var myNameInter = "";
+myName.split("").forEach(function(letra, index){
+		if(index % 2 === 0)
+			myNameInter += letra.toUpperCase();
+		else
+			myNameInter += letra.toLowerCase();
+});
+
+console.log( myNameInter )
 
 })();
