@@ -19,8 +19,8 @@ E assim por diante, até a última.
 console.log( 'As letras do seu nome:' );
 var name = 'rodrigo';
 
-for (var i = 0; i <= name.length -1; i++) {	
-	console.log(" " + name.charAt(i) + "  a " + (i + 1) + "A letra do meu nome.");
+for (var i = 0; i < name.length; i++) {	
+	console.log(" " + name.charAt(i) + "  a " + (i + 1) + "ª letra do meu nome.");
 }
 
 /*
@@ -42,8 +42,8 @@ var resultFinal = '';
 fullName.split('-').forEach(function(item){
 	resultFinal += (item.charAt(0).toUpperCase() + item.slice(1) + " ");
 });
-console.log(fullName)
-console.log(resultFinal)
+console.log(fullName);
+console.log(resultFinal);
 
 
 /*
@@ -58,15 +58,26 @@ O resultado final deve ficar mais ou menos assim:
 console.log( '\nMeus amigos:' );
 
 var myArr = ['Maria',' João', ' Jéssica', ' Pedro', ' Luis'];
-myArr.splice(myArr.length - 1, 0 , 'e');
-console.log(myArr.join() + " são meus amigos.".replace(',e,', 'e'));
+
+var phrase = myArr.reduce(function(acumulado, atual, index){
+	var separator = myArr.length - 1 === index ? ' e ': ', ';
+	return acumulado + separator + atual;
+}).concat(' são meus amigos');
+console.log(phrase)
+
+//o que eu fiz kkkkkkk
+//myArr.splice(myArr.length - 1, 0 , 'e');
+//console.log(myArr.join() + " são meus amigos.".replace(',e,', 'e'));
+//o que eu fiz
+
+
 
 /*
 Usando o replace(), faça a string "Roberto" virar "Roberta".
 Mostre o resultado no console.
 */
 console.log( '\nEra "Roberto", agora é:' );
-console.log( 'Roberto'.replace('Roberto', 'Roberta') );
+console.log( 'Roberto'.replace('to', 'ta') );
 
 
 /*
@@ -75,6 +86,7 @@ faz a busca do final para o início da string.
 */
 console.log( '\nParte de uma string:' );
 console.log('Fernando'.slice(3)) 
+console.log('Fernando'.substring(8, 3));
 
 
 /*
@@ -91,10 +103,10 @@ var myName = 'gabriEla';
 
 var myNameInter = "";
 myName.split("").forEach(function(letra, index){
-		if(index % 2 === 0)
-			myNameInter += letra.toUpperCase();
-		else
-			myNameInter += letra.toLowerCase();
+	if(index % 2 === 0)
+		myNameInter += letra.toUpperCase();
+	else
+		myNameInter += letra.toLowerCase();
 });
 
 console.log( myNameInter )
