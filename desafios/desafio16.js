@@ -45,6 +45,7 @@ fullName.split('-').forEach(function(item){
 console.log(fullName)
 console.log(resultFinal)
 
+
 /*
 - Crie um array com 5 nomes. Reduza esses nomes a uma única string, separando
 cada nome por vírgula. Entre o penúltimo e o último nome, o separador deve
@@ -56,12 +57,15 @@ O resultado final deve ficar mais ou menos assim:
 */
 console.log( '\nMeus amigos:' );
 
+var myArr = ['Maria',' João', ' Jéssica', ' Pedro', ' Luis'];
+myArr.splice(myArr.length - 1, 0 , 'e');
+console.log(myArr.join() + " são meus amigos.".replace(',e,', 'e'));
+
 /*
 Usando o replace(), faça a string "Roberto" virar "Roberta".
 Mostre o resultado no console.
 */
 console.log( '\nEra "Roberto", agora é:' );
-
 console.log( 'Roberto'.replace('Roberto', 'Roberta') );
 
 
@@ -70,8 +74,8 @@ Mostre no console a parte "nando" da string "Fernando". Use o método que
 faz a busca do final para o início da string.
 */
 console.log( '\nParte de uma string:' );
-
 console.log('Fernando'.slice(3)) 
+
 
 /*
 Declare uma variável chamada `myName`, que receba o seu primeiro nome,
