@@ -45,7 +45,7 @@ console.log( 'Limpando CPFs:' );
 function cleanCPF(cpf)
 {
 	var cpfClear;
-
+	//\d{3}([\.-])?
 	cpfClear.replace()
 
 
