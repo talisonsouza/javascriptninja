@@ -18,7 +18,9 @@
 . - quanlquer caracter exto querbra de linha
 ^ - negação ex. [^abc] == tudo, exeto a b c
 {n, m} - repetidores. ex: \d{2,5} = faz o metch procurando sequencia de 2 digitos ou no maximo 5
-
+? - opcional ex: \s\d? um caracter seguido de um número opcional
++ - representa uma ou mais ocorrencia do item anterior ex: /s+/ match  ssss
+* - zero ou mais ocorrencia do item anterior
 */
 
 
@@ -39,7 +41,17 @@ eles! Use um console.log para cada CPF.
 - "101.123-131x32"
 */
 console.log( 'Limpando CPFs:' );
-// ?
+
+function cleanCPF(cpf)
+{
+	var cpfClear;
+
+	cpfClear.replace()
+
+
+	return cpfClear;
+
+}
 
 /*
 Usando os CPFs limpos acima, deixe-os com a formatação correta de CPF.
