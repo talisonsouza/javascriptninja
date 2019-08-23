@@ -2,6 +2,15 @@
 	'use strict'
 
 /*
+flags
+	g - global
+	i - ignore case
+	m - multline -- geralmente usado com ^ inicio de linha
+	EX:	/^</gim
+		<a>aaa</a>
+		<a>aaa</a>
+		<a>aaa</a>
+
 
 [] - lista dos caracteres que estiverem ai dentro
 () - grupo ou captura
@@ -14,9 +23,14 @@
 \S - qualquer caracter qie nao seja espaco em branco 
 \n - quebra de linha
 . - quanlquer caracter exto querbra de linha
-^ - negação ex. [^abc] == tudo, exeto a b c
+^ - dentro de uma lista [] negação ex. [^abc] == tudo, exeto a b c
+^ - fora de uma lista verifica caractere no começo da string  ex. ^<  
+$ - match com fim de string
 {n, m} - repetidores. ex: \d{2,5} = faz o metch procurando sequencia de 2 digitos ou no maximo 5
-? - opcional ex: \s\d? um caracter seguido de um número opcional
+? - opcional ex: \s\d? um caracter seguido de um número opcional --- ultilizado com caracter
+? - também pra captura nao gulosa - ultilizado após um repetidor 
+?: - usa agrupamento sem captura, apenas match.  ultilizado no inicio do grupo ex  "julho e junho"  /ju(?:n|l)ho/
+\1, \2 - referencia o match na propria regex
 + - representa uma ou mais ocorrencia do item anterior ex: /s+/ match  ssss
 * - zero ou mais ocorrencia do item anterior
 */
