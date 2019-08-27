@@ -87,7 +87,22 @@ para exemplificar.
 */
 var markup = '<main>\n  <div class="container">\n    <span class="text date"></span>\n    <p class=\'excerpt\'></p>\n  </div>\n</main>';
 console.log( '\nQuais classes CSS existem na marcação abaixo?\n\n', markup, '\n' );
-// ?
+
+console.log("[RESULTADO] para a classe [CLASSE]");
+console.log("[RESULTADO] para a classe [CLASSE]");
+console.log("[RESULTADO] para a classe [CLASSE]");
+console.log("[RESULTADO] para a classe [CLASSE]");
+
+function hasClass(markup, cssClass)
+{
+	var regex = /<.+\sclass=\\?["'](.+?)\\?["']>/gm;
+
+
+
+
+}
+
+
 
 })();
 
