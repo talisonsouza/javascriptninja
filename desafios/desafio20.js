@@ -21,48 +21,47 @@ nome, `username` deve receber "Desconhecido".
 Com a resposta, mostre um alert com a mensagem "Bem vindo [USERNAME]!"
 */
 
-var username =  win.prompt("Qual o seu nome?") ? win.prompt("Qual o seu nome?") : "Desconhecido";
+var username = win.prompt("Qual o seu nome?");
+if(!username)
+    username = "Desconhecido";
 
 alert("Bem vindo " + username);
-
 
 /*
 Agora, pergunte ao usuário "Qual o seu e-mail?", atribuindo o resultado à
 uma variável chamada `email`.
 */
-
-var email = win.prompt("Qual o seu email? ") ? win.prompt("Qual o seu email? ") : "";
+var email = win.prompt("Qual o seu email? ");
 
 /*
 - Selecione o input de "Nome", atribuindo-o à uma variável chamada
 `$inputUsername`.
 */
-var $inputUsername = doc.querSelector('#name');
+var $inputUsername = doc.querySelector('#name');
 
 /*
 - Selecione o input de "Email", atribuindo-o à uma variável chamada
 `$inputEmail`.
 */
-var $inputEmail = doc.querSelector('#email');
+var $inputEmail = doc.querySelector('#email');
 
 /*
 - Selecione o campo de "Mensagem", atribuindo-o à uma variável chamada
 `$message`.
 */
-var $message = doc.querSelector('#message');
+var $message = doc.querySelector('#message');
 
 /*
 - Selecione o botão de envio do formulário, atribuindo-o à uma variável
 chamada `$button`.
 */
-var $button = doc.querSelector('#button');
-
-
+var $button = doc.querySelector('#button');
 /*
 Preencha os campos de "Nome" e "Email" que estão no documento com os valores
 entrados pelo usuário.
 */
-// ?
+$inputUsername.value = username;
+$inputEmail.value = email;
 
 /*
 Adicione um listener de evento de click ao botão que faça o seguinte:
@@ -88,7 +87,29 @@ Se for confirmado, mostre um alerta com a mensagem:
 Caso contrário, mostre um alerta com a mensagem:
     - "Não enviado."
 */
-// ?
+
+$button.addEventListener('click', function(e){
+
+    e.preventDefault();
+
+    if (!$inputUsername.value)
+        alerta("Preencha o nome do usuário!");
+
+    if(!$inputEmail.value)
+        alert("Preencha o e-mail!");
+
+    if(!$message.value)
+        alert("Preencha a mensagem!");
+
+    if(!isValidEmail( $inputEmail.value ))
+        alert("Entre com um e-mail válido!");
+
+    if(win.confirm("Tem certeza que deseja enviar o formulário?"))
+        alert("Enviado com sucesso!");
+    else
+        alert("Não enviado.");
+
+}, false);
 
 /*
 Crie uma função chamada `isValidEmail`, que será usada na validação do
@@ -116,6 +137,10 @@ Alguns e-mails inválidos:
     - "rita-marica@titica.a.b"
     - "agua_@evida.br.com"
 */
-// ?
+function isValidEmail(email)
+{
+    //.+@\w+\.\w{2,20}(\.\w{2})?
+    return true;
+}
 
 })(window, document);
