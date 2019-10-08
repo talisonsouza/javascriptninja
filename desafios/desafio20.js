@@ -21,10 +21,7 @@ nome, `username` deve receber "Desconhecido".
 Com a resposta, mostre um alert com a mensagem "Bem vindo [USERNAME]!"
 */
 
-var username = win.prompt("Qual o seu nome?");
-if(!username)
-    username = "Desconhecido";
-
+var username = win.prompt("Qual o seu nome?") || "Desconhecido";
 alert("Bem vindo " + username);
 
 /*
@@ -93,16 +90,17 @@ $button.addEventListener('click', function(e){
     e.preventDefault();
 
     if (!$inputUsername.value)
-        alerta("Preencha o nome do usuário!");
+       return alerta("Preencha o nome do usuário!");
 
     if(!$inputEmail.value)
-        alert("Preencha o e-mail!");
+        return alert("Preencha o e-mail!");
 
     if(!$message.value)
-        alert("Preencha a mensagem!");
+        return alert("Preencha a mensagem!");
 
     if(!isValidEmail( $inputEmail.value ))
-        alert("Entre com um e-mail válido!");
+        return alert("Entre com um e-mail válido!");
+        
 
     if(win.confirm("Tem certeza que deseja enviar o formulário?"))
         alert("Enviado com sucesso!");
@@ -139,8 +137,12 @@ Alguns e-mails inválidos:
 */
 function isValidEmail(email)
 {
-    //.+@\w+\.\w{2,20}(\.\w{2})?
-    return true;
+    var regex = /^[\w+.]+@\w+\.\w{2,}(\.\w{2})?$/gmi;
+
+    if(regex.test(email))
+        return true
+
+    return false;
 }
 
 })(window, document);
