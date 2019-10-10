@@ -10,8 +10,8 @@
   };
 
    var objPerson2 = {
-    name: 'João',
-    lastName: 'Silva'
+    name: 'Maria',
+    lastName: 'Souza'
   };
 
   /*
@@ -26,7 +26,15 @@
   contexto da função. Use um console.log por pessoa.
   */
   console.log( 'O nome das pessoas é:' );
-  // ?
+  
+  function getFullName() 
+  {
+      return this.name + " " + this.lastName;
+  }
+
+  console.log( getFullName.call(objPerson));
+  console.log( getFullName.call(objPerson2));
+
 
   /*
   Crie uma função chamada `sum`. Essa função pode receber uma lista de
