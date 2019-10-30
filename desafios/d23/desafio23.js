@@ -1,34 +1,40 @@
   (function(w,d){ 
+    
     'use strict'
 
     var $input = d.querySelector('[data-js="resultValue"]');
-
-    //buttons
-    var $btn0 = d.querySelector('[data-number-js="0"]');
-    var $btn1 = d.querySelector('[data-number-js="1"]');
-    var $btn2 = d.querySelector('[data-number-js="2"]');
-    var $btn3 = d.querySelector('[data-number-js="3"]');
-    var $btn4 = d.querySelector('[data-number-js="4"]');
-    var $btn5 = d.querySelector('[data-number-js="5"]');
-    var $btn6 = d.querySelector('[data-number-js="6"]');
-    var $btn7 = d.querySelector('[data-number-js="7"]');
-    var $btn8 = d.querySelector('[data-number-js="8"]');
-    var $btn9 = d.querySelector('[data-number-js="9"]');
-
-    var $buttonsListCount = document.querySelectorAll('[data-number-js]').length;
+    var $buttonsNumbers = document.querySelectorAll('[data-number-js]');
+    var $buttonsOperations = document.querySelectorAll('[data-operation-js]');    
+    var operations = {'+':'+','-':'-', x:'x','÷':'÷'};
 	
-	function callBack()
+	function clickNumberCallBack()
 	{		
-		alert(this.value);
+        $input.value = $input.value.concat(this.value);		
 	}
 
-	for (var i = 0; i <= $buttonsListCount - 1; i++) 
+    function clickOperationCallback()
+    {        
+        var value = $input.value;
+        var clickValueOperation = this.value;
+        var lastCharacter = value.charAt(value.length - 1);
+
+        if(!operations[lastCharacter])        
+            $input.value += clickValueOperation;
+        else
+            $input.value = $input.value.replace(/.$/, clickValueOperation);        
+    }
+
+	for (var i = 0; i <= $buttonsNumbers.length - 1; i++) 
 	{
-
 		var $btn = d.querySelector('[data-number-js="'+ i +'"]');	
+		$btn.addEventListener('click', clickNumberCallBack, false);
+	}    
 
-		$btn.addEventListener('click', callBack);
-	}
+    $buttonsOperations.forEach(function($btn, index, arr){
+
+        $btn.addEventListener('click', clickOperationCallback, false);
+    });
+
     
 
    /*
