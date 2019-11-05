@@ -1,16 +1,23 @@
-  (function(w,d){ 
+(function(w,d){ 
     
     'use strict'
 
     var $input = d.querySelector('[data-js="resultValue"]');
     var $buttonsNumbers = document.querySelectorAll('[data-number-js]');
-    var $buttonsOperations = document.querySelectorAll('[data-operation-js]');    
+    var $buttonsOperations = document.querySelectorAll('[data-operation-js]');  
+    var $buttonCE =   document.querySelector('[data-js="btn-clean"]');  
+    var $buttonExecOperation =   document.querySelector('[data-js="btn-result"]'); 
     var operations = {'+':'+','-':'-', x:'x','÷':'÷'};
+
+    function cleanCalculator()
+    {
+        $input.value = "0";
+    }
 	
-	function clickNumberCallBack()
-	{		
-        $input.value = $input.value.concat(this.value);		
-	}
+  	function clickNumberCallBack()
+  	{		
+          $input.value = $input.value.concat(this.value);		
+  	}
 
     function clickOperationCallback()
     {        
@@ -18,22 +25,28 @@
         var clickValueOperation = this.value;
         var lastCharacter = value.charAt(value.length - 1);
 
-        if(!operations[lastCharacter])        
-            $input.value += clickValueOperation;
-        else
-            $input.value = $input.value.replace(/.$/, clickValueOperation);        
+        !operations[lastCharacter] ? $input.value += clickValueOperation : $input.value = $input.value.replace(/.$/, clickValueOperation);     
+           
     }
 
-	for (var i = 0; i <= $buttonsNumbers.length - 1; i++) 
-	{
-		var $btn = d.querySelector('[data-number-js="'+ i +'"]');	
-		$btn.addEventListener('click', clickNumberCallBack, false);
-	}    
+    function calc()
+    {
+       $input.value.replace("x", "*");
+    }
+
+  	for (var i = 0; i <= $buttonsNumbers.length - 1; i++) 
+  	{
+    		var $btn = d.querySelector('[data-number-js="'+ i +'"]');	
+    		$btn.addEventListener('click', clickNumberCallBack, false);
+  	}    
 
     $buttonsOperations.forEach(function($btn, index, arr){
 
         $btn.addEventListener('click', clickOperationCallback, false);
     });
+
+    $buttonCE.addEventListener('click', cleanCalculator, false);
+    $buttonExecOperation.addEventListener('click', calc, false);
 
     
 
@@ -66,4 +79,4 @@ input;
 - Ao pressionar o botão "CE", o input deve ficar zerado.
 */
 
-  })(window,document);
+})(window,document);
