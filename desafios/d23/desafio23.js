@@ -7,19 +7,19 @@
     var $buttonsOperations = document.querySelectorAll('[data-operation-js]');  
     var $buttonCE =   document.querySelector('[data-js="btn-clean"]');  
     var $buttonExecOperation =   document.querySelector('[data-js="btn-result"]'); 
-    var operations = {'+':'+','-':'-', x:'x','÷':'÷'};
+    //var operations = {'+':'+','-':'-', x:'x','÷':'÷'};
 
-    function cleanCalculator()
+    function handleClickCE()
     {
         $input.value = "0";
     }
 	
-  	function clickNumberCallBack()
+  	function handleClickNumber()
   	{		
-          $input.value = $input.value.concat(this.value);		
+          $input.value += this.value;		
   	}
 
-    function clickOperationCallback()
+  /*  function handleClickOperation()
     {        
         var value = $input.value;
         var clickValueOperation = this.value;
@@ -27,26 +27,47 @@
 
         !operations[lastCharacter] ? $input.value += clickValueOperation : $input.value = $input.value.replace(/.$/, clickValueOperation);     
            
-    }
+    }*/
 
-    function calc()
+    function isLastItemAnOperation()
     {
-       $input.value.replace("x", "*");
+		var operations = ['+','-','x','÷'];
+		var lastItem = $input.value.split('').pop();
+		return operations.some(function(operator){
+			return operator === lastItem;
+		});
     }
 
-  	for (var i = 0; i <= $buttonsNumbers.length - 1; i++) 
-  	{
-    		var $btn = d.querySelector('[data-number-js="'+ i +'"]');	
-    		$btn.addEventListener('click', clickNumberCallBack, false);
-  	}    
+    function removeLastItemIfIsAnOperation()
+    {
+		if(isLastItemAnOperation())
+			$input.value = $input.value.slice(0,-1);
 
-    $buttonsOperations.forEach(function($btn, index, arr){
+    }
 
-        $btn.addEventListener('click', clickOperationCallback, false);
+    function handleClickOperation()
+    {   
+    	removeLastItemIfIsAnOperation();    
+        $input.value += this.value;
+    }
+
+    function handleClickCalc()
+    {
+    	removeLastItemIfIsAnOperation();
+        console.log($input.value.match(/(?:\d+)|[+x÷-]/g));        
+    }
+
+    Array.prototype.forEach.call($buttonsNumbers, function(btn){
+		btn.addEventListener('click', handleClickNumber, false);
     });
 
-    $buttonCE.addEventListener('click', cleanCalculator, false);
-    $buttonExecOperation.addEventListener('click', calc, false);
+    Array.prototype.forEach.call($buttonsOperations,function(btn){
+
+        btn.addEventListener('click', handleClickOperation, false);
+    });
+
+    $buttonCE.addEventListener('click', handleClickCE, false);
+    $buttonExecOperation.addEventListener('click', handleClickCalc, false);
 
     
 
